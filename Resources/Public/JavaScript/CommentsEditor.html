@@ -1,0 +1,29 @@
+<div class="neos-add-comment">
+	{{view view.TextArea placeholder="Your comment" rows="3" valueBinding="view.newCommentField"}}
+	<button {{action "add" target="view"}}>Add</button>
+</div>
+
+
+
+{{#if view._hasComments}}
+	<div class="neos-inspector-headline">
+		<span>Current Notes</span>
+	</div>
+	{{#each note in view.commentsList}}
+		{{#unless note.isDeleted}}
+			<div class="neos-single-comment">
+				<header>
+					<span>
+						{{formatDate note.date}}: {{note.user}}
+					</span>
+					<button class="neos-delete-comment" {{action "deleteComment" note target="view"}}><i class="icon-trash"></i></button>
+				</header>
+				<div class="neos-comment-text">
+					{{note.comment}}
+				</div>
+			</div>
+		{{/unless}}
+	{{/each}}
+{{/if}}
+
+

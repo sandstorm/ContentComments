@@ -1,0 +1,31 @@
+/**
+ * - load custom CSS for the comments feature
+ * - load custom JavaScript which will interact with the Content Module, displaying the Comment Overlays on the Page.
+ */
+
+prototype(TYPO3.Neos:Page) {
+	head.commentsEditorCss = TYPO3.TypoScript:Tag {
+		@position = 'after neosBackendHeader'
+
+		tagName = 'link'
+		attributes {
+			rel = 'stylesheet'
+			href = TYPO3.TypoScript:ResourceUri {
+				path = 'resource://Sandstorm.ContentComments/Public/Styles/ContentComments.css'
+			}
+		}
+		@if.onlyRenderWhenNotInLiveWorkspace = ${node.context.workspace.name != 'live'}
+	}
+
+	contentCommentsJs = TYPO3.TypoScript:Tag {
+		@position = 'after neosBackendFooter 10000'
+		tagName = 'script'
+		attributes {
+			type = 'text/javascript'
+			src = TYPO3.TypoScript:ResourceUri {
+				path = 'resource://Sandstorm.ContentComments/Public/JavaScript/CommentingContentModuleExtension.js'
+			}
+		}
+		@if.onlyRenderWhenNotInLiveWorkspace = ${node.context.workspace.name != 'live'}
+	}
+}

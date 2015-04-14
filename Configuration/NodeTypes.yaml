@@ -1,0 +1,21 @@
+'TYPO3.Neos:Node':
+  ui:
+    inspector:
+      tabs:
+        comments:
+          label: 'Comments'
+          position: 50
+          icon: 'icon-comments'
+      groups:
+        comments:
+          label: 'Comments'
+          tab: 'comments'
+          position: 1000
+  properties:
+    comments:
+      type: 'string'
+      ui:
+        label: 'New Comment'
+        inspector:
+          group: 'comments'
+          editor: 'Sandstorm.ContentComments/CommentsEditor'

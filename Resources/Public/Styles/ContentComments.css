@@ -1,0 +1,69 @@
+/* Color palette */
+/* Sizes & margins */
+/* Components */
+/* _Content.scss */
+.neos-contentelement {
+  position: relative; }
+
+.neos-contentelement.neos-contentelement-has-comments:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  content: " ";
+  border: solid;
+  border-width: 0 20px 20px 0;
+  border-color: transparent #08c transparent transparent;
+  /* $linkColor == #08c */
+  pointer-events: none; }
+
+.neos-contentelement.neos-contentelement-has-comments:before {
+  position: absolute;
+  right: 2px;
+  top: -1px;
+  color: white;
+  font-family: FontAwesome;
+  font-size: 9px;
+  content: "\f086";
+  z-index: 10; }
+
+/* Inspector */
+.comments-editor .neos-add-comment {
+  margin-bottom: 16px; }
+  .comments-editor .neos-add-comment textarea {
+    max-height: 100% !important;
+    margin-bottom: 12px; }
+    .comments-editor .neos-add-comment textarea:focus {
+      line-height: 38px !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important; }
+.comments-editor .neos-inspector-headline {
+  margin-left: -16px; }
+.comments-editor .neos-single-comment {
+  margin-bottom: 12px; }
+  .comments-editor .neos-single-comment header {
+    position: relative;
+    width: 100%; }
+    .comments-editor .neos-single-comment header span {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 100%;
+      padding-left: 4px;
+      padding-right: 100px;
+      height: 40px;
+      line-height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background-color: #323232; }
+  .comments-editor .neos-single-comment .neos-delete-comment {
+    position: absolute;
+    right: 0px;
+    top: 0px; }
+  .comments-editor .neos-single-comment .neos-comment-text {
+    border: 1px solid #323232;
+    margin-top: -3px;
+    padding: 4px;
+    padding-top: 16px;
+    padding-bottom: 16px; }
+
+/*# sourceMappingURL=ContentComments.css.map */

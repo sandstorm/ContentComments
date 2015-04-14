@@ -1,13 +1,6 @@
 <?php
 
-use Behat\Behat\Exception\PendingException;
-use Behat\Gherkin\Node\TableNode,
-	Behat\MinkExtension\Context\MinkContext;
-use TYPO3\Flow\Tests\Behavior\Features\Bootstrap\IsolatedBehatStepsTrait;
-use TYPO3\Flow\Tests\Behavior\Features\Bootstrap\SecurityOperationsTrait;
-use TYPO3\Flow\Utility\Arrays;
-use PHPUnit_Framework_Assert as Assert;
-use TYPO3\TYPO3CR\Tests\Behavior\Features\Bootstrap\NodeAuthorizationTrait;
+use Behat\MinkExtension\Context\MinkContext;
 use TYPO3\TYPO3CR\Tests\Behavior\Features\Bootstrap\NodeOperationsTrait;
 
 require_once(__DIR__ . '/../../../../../Flowpack.Behat/Tests/Behat/FlowContext.php');
@@ -26,16 +19,6 @@ class FeatureContext extends MinkContext {
 	 * @var \TYPO3\Flow\Object\ObjectManagerInterface
 	 */
 	protected $objectManager;
-
-	/**
-	 * @var \Behat\Mink\Element\ElementInterface
-	 */
-	protected $selectedContentElement;
-
-	/**
-	 * @var string
-	 */
-	protected $lastExportedSiteXmlPathAndFilename = '';
 
 	protected $isolated = FALSE;
 
