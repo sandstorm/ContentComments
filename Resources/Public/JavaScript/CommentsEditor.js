@@ -5,9 +5,10 @@ define(
 		'Library/backbone',
 		'Shared/EventDispatcher',
 		'Shared/Configuration',
+		'Shared/HttpClient',
 		'text!./CommentsEditor.html'
 	],
-	function (Ember, $, Backbone, EventDispatcher, Configuration, template) {
+	function (Ember, $, Backbone, EventDispatcher, Configuration, HttpClient, template) {
 		return Ember.View.extend({
 
 			TextArea: Ember.TextArea,
@@ -19,10 +20,24 @@ define(
 			init: function() {
 				this._super();
 				this.set('commentsList', []);
+				this._fetchCurrentUserName();
 			},
 
 			didInsertElement: function() {
 				this.set('commentsList', JSON.parse(this.get('inspector.selectedNode.attributes.comments') || '[]'));
+			},
+
+			currentUserName: null,
+			addButtonDisabled: function() {
+				return !this.get('currentUserName');
+			}.property('currentUserName'),
+
+			_fetchCurrentUserName: function() {
+				var uri = HttpClient._getEndpointUrl('neos-data-source') + '/commenting-current-user';
+				var that = this;
+				HttpClient.getResource(uri, {dataType: 'json'}).then(function(thisUser) {
+					that.set('currentUserName', thisUser.name);
+				});
 			},
 
 			_hasComments: function() {
@@ -39,7 +54,7 @@ define(
 
 				parsedComments.pushObject({
 					date: parseInt(new Date().getTime()),
-					user: 'myuser', // TODO
+					user: this.get('currentUserName'),
 					comment: newComment,
 					isDeleted: false,
 					isResolved: false // TODO: Maybe use this to resolve comment?
@@ -56,7 +71,13 @@ define(
 				if (entity.isValid() !== true) {
 					return;
 				}
-				Backbone.sync('update', entity);
+
+				// The "debounce" here is crucially important: If we leave it out, we trigger too many change events
+				// on the same node in a short time if the user e.g. deletes many comments, leading to locking exceptions
+				// on the server side (which we cannot catch)
+				Ember.run.debounce({}, function() {
+					Backbone.sync('update', entity);
+				}, 250);
 			},
 
 			deleteComment: function(currentComment) {

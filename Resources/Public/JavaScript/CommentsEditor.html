@@ -1,6 +1,6 @@
 <div class="neos-add-comment">
 	{{view view.TextArea placeholder="Your comment" rows="3" valueBinding="view.newCommentField"}}
-	<button {{action "add" target="view"}}>Add</button>
+	<button {{bindAttr disabled="view.addButtonDisabled"}}{{action "add" target="view"}}>Add</button>
 </div>
 
 
