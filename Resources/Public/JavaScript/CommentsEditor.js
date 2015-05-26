@@ -9,6 +9,11 @@ define(
 		'text!./CommentsEditor.html'
 	],
 	function (Ember, $, Backbone, EventDispatcher, Configuration, HttpClient, template) {
+
+		Ember.Handlebars.helper('sandstorm-comments-format-date', function(value, options) {
+			return new Date(value).toISOString().slice(0, 16).replace('T', ' ');
+		});
+
 		return Ember.View.extend({
 
 			TextArea: Ember.TextArea,

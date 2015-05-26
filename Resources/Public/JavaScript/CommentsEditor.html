@@ -14,7 +14,7 @@
 			<div class="neos-single-comment">
 				<header>
 					<span>
-						{{formatDate note.date}}: {{note.user}}
+						{{sandstorm-comments-format-date note.date}}: {{note.user}}
 					</span>
 					<button class="neos-delete-comment" {{action "deleteComment" note target="view"}}><i class="icon-trash"></i></button>
 				</header>
