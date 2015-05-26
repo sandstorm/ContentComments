@@ -3,13 +3,17 @@
 Created by Sandstorm Media in 2015.
 
 This Package Adds Content Comments / Sticky Notes to TYPO3 Neos. You can comment on arbitrary nodes.
-It has been tested with the current TYPO3 Neos Master, and will run with Neos 2.0.
+
+Supported Neos Versions:
+
+- Neos 1.2.*
+- Neos 2.0.*
+- Neos Master
 
 ## Usage
 
 * install the package
 * use the new "Comments" Tab in the Inspector
-
 
 ## Internal Working
 
