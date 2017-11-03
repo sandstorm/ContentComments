@@ -2,14 +2,22 @@
     "name": "sandstorm/contentcomments",
     "type": "typo3-flow-package",
     "description": "A Neos package to add content comments to any node (as communication medium)",
-    "keywords": ["neoscms", "neos", "comment", "notes", "stickynotes", "communication"],
+    "keywords": [
+        "neoscms",
+        "neos",
+        "comment",
+        "notes",
+        "stickynotes",
+        "communication"
+    ],
     "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Sebastian Kurfürst",
             "homepage": "http://sandstorm-media.de",
             "role": "Developer"
-        }, {
+        },
+        {
             "name": "Michael Berhorst",
             "homepage": "http://sandstorm-media.de",
             "role": "Developer"
@@ -26,5 +34,10 @@
         "psr-0": {
             "Sandstorm\\ContentComments": "Classes"
         }
+    },
+    "extra": {
+        "applied-flow-migrations": [
+            "TYPO3.FLOW3-201201261636"
+        ]
     }
 }
