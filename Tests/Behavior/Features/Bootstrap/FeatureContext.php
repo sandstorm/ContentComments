@@ -16,7 +16,7 @@ class FeatureContext extends MinkContext {
 	use ContentCommentsTrait;
 
 	/**
-	 * @var \TYPO3\Flow\Object\ObjectManagerInterface
+	 * @var \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
 	 */
 	protected $objectManager;
 
@@ -35,7 +35,7 @@ class FeatureContext extends MinkContext {
 	}
 
 	/**
-	 * @return \TYPO3\Flow\Object\ObjectManagerInterface
+	 * @return \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
 	 */
 	protected function getObjectManager() {
 		return $this->objectManager;
