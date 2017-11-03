@@ -4,6 +4,6 @@ Neos:
     userInterface:
       requireJsPathMapping:
         Sandstorm.ContentComments: 'resource://Sandstorm.ContentComments/Public/JavaScript/'
-    typoScript:
+    fusion:
       autoInclude:
         Sandstorm.ContentComments: true
