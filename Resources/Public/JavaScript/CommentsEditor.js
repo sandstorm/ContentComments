@@ -46,6 +46,7 @@ define(
 			},
 
 			_hasComments: function() {
+				debugger;
 				return !!this.get('commentsList').findBy('isDeleted', false)
 			}.property('commentsList.@each.isDeleted'),
 
@@ -81,7 +82,7 @@ define(
 				// on the same node in a short time if the user e.g. deletes many comments, leading to locking exceptions
 				// on the server side (which we cannot catch)
 				Ember.run.debounce({}, function() {
-					Backbone.sync('update', entity);
+					Backbone.sync('update', entity, { render: false });
 				}, 250);
 			},
 

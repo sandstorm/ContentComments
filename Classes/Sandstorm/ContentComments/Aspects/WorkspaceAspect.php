@@ -22,7 +22,7 @@ class WorkspaceAspect {
 	 */
 	public function replaceNodeData(JoinPointInterface $joinPoint) {
 		/** @var Node $node */
-		$node = $joinPoint->getMethodArgument('node');
+		$node = $joinPoint->getMethodArgument('sourceNode');
 		if ($node->isRemoved()) {
 			// If the node is supposed to be removed, we do not need to do anything as the node will be gone anyways afterwards
 			return $joinPoint->getAdviceChain()->proceed($joinPoint);
