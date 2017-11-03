@@ -3,7 +3,7 @@
  * - load custom JavaScript which will interact with the Content Module, displaying the Comment Overlays on the Page.
  */
 
-prototype(TYPO3.Neos:Page) {
+prototype(Neos.Neos:Page) {
 	head.commentsEditorCss = Neos.Fusion:Tag {
 		@position = 'after neosBackendHeader'
 
