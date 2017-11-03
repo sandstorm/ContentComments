@@ -9,7 +9,7 @@
 namespace Sandstorm\ContentComments;
 
 use Neos\Flow\Annotations as Flow;
-use TYPO3\Neos\Service\DataSource\AbstractDataSource;
+use Neos\Neos\Service\DataSource\AbstractDataSource;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 
 
@@ -20,7 +20,7 @@ class CommentingCurrentUserDataSource extends AbstractDataSource {
 
 	/**
 	 * @Flow\Inject
-	 * @var \TYPO3\Neos\Service\UserService
+	 * @var \Neos\Neos\Service\UserService
 	 */
 	protected $userService;
 
