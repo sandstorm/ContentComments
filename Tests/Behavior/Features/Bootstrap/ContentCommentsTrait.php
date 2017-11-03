@@ -17,7 +17,7 @@ trait ContentCommentsTrait {
 	 */
 	public function iAddACommentToThisNode($comment) {
 		$currentNode = $this->currentNodes[0];
-		/* @var \TYPO3\TYPO3CR\Domain\Model\NodeInterface $currentNode */
+		/* @var \Neos\ContentRepository\Domain\Model\NodeInterface $currentNode */
 		$commentsSerialized = ($currentNode->getProperty('comments') ?: '[]');
 		$comments = json_decode($commentsSerialized, TRUE);
 
@@ -38,7 +38,7 @@ trait ContentCommentsTrait {
 	 */
 	public function thisNodeHasComments($expectedNumberOfComments) {
 		$currentNode = $this->currentNodes[0];
-		/* @var \TYPO3\TYPO3CR\Domain\Model\NodeInterface $currentNode */
+		/* @var \Neos\ContentRepository\Domain\Model\NodeInterface $currentNode */
 		$commentsSerialized = ($currentNode->getProperty('comments') ?: '[]');
 
 		$comments = json_decode($commentsSerialized, TRUE);

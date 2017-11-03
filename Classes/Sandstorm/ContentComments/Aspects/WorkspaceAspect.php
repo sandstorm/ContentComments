@@ -3,9 +3,9 @@ namespace Sandstorm\ContentComments\Aspects;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Aop\JoinPointInterface;
-use TYPO3\TYPO3CR\Domain\Model\Node;
-use TYPO3\TYPO3CR\Domain\Model\NodeData;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
+use Neos\ContentRepository\Domain\Model\Node;
+use Neos\ContentRepository\Domain\Model\NodeData;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 
 /**
  * Hook into the Workspace and merge comments together on "replaceNodeData" call.
@@ -16,7 +16,7 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 class WorkspaceAspect {
 
 	/**
-	 * @Flow\Around("method(TYPO3\TYPO3CR\Domain\Model\Workspace->replaceNodeData())")
+	 * @Flow\Around("method(Neos\ContentRepository\Domain\Model\Workspace->replaceNodeData())")
 	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint The current join point
 	 * @return string The result of the target method if it has not been intercepted
 	 */
