@@ -16,7 +16,7 @@ class FeatureContext extends MinkContext {
 	use ContentCommentsTrait;
 
 	/**
-	 * @var \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
+	 * @var \Neos\Flow\ObjectManagement\ObjectManagerInterface
 	 */
 	protected $objectManager;
 
@@ -30,12 +30,12 @@ class FeatureContext extends MinkContext {
 	public function __construct(array $parameters) {
 		$this->useContext('flow', new \Flowpack\Behat\Tests\Behat\FlowContext($parameters));
 		$this->objectManager = $this->getSubcontext('flow')->getObjectManager();
-		$this->environment = $this->objectManager->get('TYPO3\Flow\Utility\Environment');
+		$this->environment = $this->objectManager->get('Neos\Flow\Utility\Environment');
 		$this->nodeAuthorizationService = $this->objectManager->get('TYPO3\TYPO3CR\Service\AuthorizationService');
 	}
 
 	/**
-	 * @return \TYPO3\Flow\ObjectManagement\ObjectManagerInterface
+	 * @return \Neos\Flow\ObjectManagement\ObjectManagerInterface
 	 */
 	protected function getObjectManager() {
 		return $this->objectManager;

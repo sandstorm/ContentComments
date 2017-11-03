@@ -29,7 +29,7 @@ trait ContentCommentsTrait {
 		);
 
 		$currentNode->setProperty('comments', json_encode($comments));
-		$this->objectManager->get('TYPO3\Flow\Persistence\PersistenceManagerInterface')->persistAll();
+		$this->objectManager->get('Neos\Flow\Persistence\PersistenceManagerInterface')->persistAll();
 		$this->resetNodeInstances();
 	}
 

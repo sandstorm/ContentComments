@@ -1,8 +1,8 @@
 <?php
 namespace Sandstorm\ContentComments\Aspects;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
 use TYPO3\TYPO3CR\Domain\Model\Node;
 use TYPO3\TYPO3CR\Domain\Model\NodeData;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
@@ -17,7 +17,7 @@ class WorkspaceAspect {
 
 	/**
 	 * @Flow\Around("method(TYPO3\TYPO3CR\Domain\Model\Workspace->replaceNodeData())")
-	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint The current join point
+	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint The current join point
 	 * @return string The result of the target method if it has not been intercepted
 	 */
 	public function replaceNodeData(JoinPointInterface $joinPoint) {
