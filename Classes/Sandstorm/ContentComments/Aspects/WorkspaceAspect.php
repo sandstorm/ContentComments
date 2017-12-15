@@ -45,7 +45,7 @@ class WorkspaceAspect {
 		// before publishing, as otherwise the NodeData which is underneath the to-be-published Node will be "dirty"
 		// and marked as "removed" at the same time, leading to a CR crash. This also is a CR bug which only occurs in
 		// very rare occasions.
-		$mergedComments = $this->mergeComments($commentsForToBePublishedNode, $commentsInTargetWorkspace);
+		$mergedComments = $this->mergeComments($commentsInTargetWorkspace, $commentsForToBePublishedNode);
 		$this->writeComments($node, $mergedComments);
 
 		return $result;
