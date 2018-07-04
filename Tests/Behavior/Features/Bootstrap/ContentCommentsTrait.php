@@ -17,7 +17,7 @@ trait ContentCommentsTrait {
 	 */
 	public function iAddACommentToThisNode($comment) {
 		$currentNode = $this->currentNodes[0];
-		/* @var \TYPO3\TYPO3CR\Domain\Model\NodeInterface $currentNode */
+		/* @var \Neos\ContentRepository\Domain\Model\NodeInterface $currentNode */
 		$commentsSerialized = ($currentNode->getProperty('comments') ?: '[]');
 		$comments = json_decode($commentsSerialized, TRUE);
 
@@ -29,7 +29,7 @@ trait ContentCommentsTrait {
 		);
 
 		$currentNode->setProperty('comments', json_encode($comments));
-		$this->objectManager->get('TYPO3\Flow\Persistence\PersistenceManagerInterface')->persistAll();
+		$this->objectManager->get('Neos\Flow\Persistence\PersistenceManagerInterface')->persistAll();
 		$this->resetNodeInstances();
 	}
 
@@ -38,7 +38,7 @@ trait ContentCommentsTrait {
 	 */
 	public function thisNodeHasComments($expectedNumberOfComments) {
 		$currentNode = $this->currentNodes[0];
-		/* @var \TYPO3\TYPO3CR\Domain\Model\NodeInterface $currentNode */
+		/* @var \Neos\ContentRepository\Domain\Model\NodeInterface $currentNode */
 		$commentsSerialized = ($currentNode->getProperty('comments') ?: '[]');
 
 		$comments = json_decode($commentsSerialized, TRUE);

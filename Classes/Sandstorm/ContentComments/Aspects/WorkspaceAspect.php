@@ -1,11 +1,11 @@
 <?php
 namespace Sandstorm\ContentComments\Aspects;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
-use TYPO3\TYPO3CR\Domain\Model\Node;
-use TYPO3\TYPO3CR\Domain\Model\NodeData;
-use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
+use Neos\ContentRepository\Domain\Model\Node;
+use Neos\ContentRepository\Domain\Model\NodeData;
+use Neos\ContentRepository\Domain\Model\NodeInterface;
 
 /**
  * Hook into the Workspace and merge comments together on "replaceNodeData" call.
@@ -16,13 +16,13 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 class WorkspaceAspect {
 
 	/**
-	 * @Flow\Around("method(TYPO3\TYPO3CR\Domain\Model\Workspace->replaceNodeData())")
-	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint The current join point
+	 * @Flow\Around("method(Neos\ContentRepository\Domain\Model\Workspace->replaceNodeData())")
+	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint The current join point
 	 * @return string The result of the target method if it has not been intercepted
 	 */
 	public function replaceNodeData(JoinPointInterface $joinPoint) {
 		/** @var Node $node */
-		$node = $joinPoint->getMethodArgument('node');
+		$node = $joinPoint->getMethodArgument('sourceNode');
 		if ($node->isRemoved()) {
 			// If the node is supposed to be removed, we do not need to do anything as the node will be gone anyways afterwards
 			return $joinPoint->getAdviceChain()->proceed($joinPoint);
@@ -45,7 +45,7 @@ class WorkspaceAspect {
 		// before publishing, as otherwise the NodeData which is underneath the to-be-published Node will be "dirty"
 		// and marked as "removed" at the same time, leading to a CR crash. This also is a CR bug which only occurs in
 		// very rare occasions.
-		$mergedComments = $this->mergeComments($commentsForToBePublishedNode, $commentsInTargetWorkspace);
+		$mergedComments = $this->mergeComments($commentsInTargetWorkspace, $commentsForToBePublishedNode);
 		$this->writeComments($node, $mergedComments);
 
 		return $result;

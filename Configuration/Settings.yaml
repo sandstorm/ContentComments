@@ -1,9 +1,9 @@
-TYPO3:
+
+Neos:
   Neos:
     userInterface:
       requireJsPathMapping:
-        'Sandstorm.ContentComments': 'resource://Sandstorm.ContentComments/Public/JavaScript/'
-
-    typoScript:
+        Sandstorm.ContentComments: 'resource://Sandstorm.ContentComments/Public/JavaScript/'
+    fusion:
       autoInclude:
-        'Sandstorm.ContentComments': TRUE
+        Sandstorm.ContentComments: true
