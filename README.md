@@ -1,5 +1,7 @@
 # Sandstorm.ContentComments
 
+## ARCHIVED -> today, please use https://github.com/networkteam/Networkteam.ContentComments instead - as this is further developed.
+
 Created by Sandstorm Media in 2015.
 
 This Package Adds Content Comments / Sticky Notes to TYPO3 Neos. You can comment on arbitrary nodes.
